@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\ListingController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 /*
@@ -14,13 +12,12 @@ use App\Models\Listing;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//All Lists
-Route::get('/', [ListingController::class, 'index']);
-
-//Show Create Form
-Route::get('/listings/create', [ListingController::class, 'create']);
-//Store Listing Data
-Route::post('/listings', [ListingController::class, 'store']);
+//All listing
+Route::get('/', [\App\Http\Controllers\ListingController::class, 'index']);
 //Single Listing
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
+Route::get('/listing/{listing}',[\App\Http\Controllers\ListingController::class,'show']);
+
+
+
+
 
