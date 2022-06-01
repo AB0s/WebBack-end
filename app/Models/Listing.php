@@ -9,6 +9,13 @@ class Listing extends Model
 {
     use HasFactory;
 
+  // protected $fillable=['title','company', 'lovation','website','email','description','tags'];
+
+    /**
+     * @var mixed
+     */
+    private $title;
+
     public function scopeFilter($query, array $filters){
         if($filters['tag']?? false){
             $query->where('tags','like','%'.request('tag').'%');
@@ -21,4 +28,7 @@ class Listing extends Model
 
     }
 
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }
